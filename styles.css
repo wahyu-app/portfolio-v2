@@ -337,7 +337,7 @@ html[data-theme="light"] .moon-icon,
 }
 
 .hero {
-  --hero-visual-size: 540px;
+  --hero-visual-size: 480px;
 
   display: grid;
   min-height: calc(100vh - 89px);
@@ -419,8 +419,8 @@ html[data-theme="light"] .moon-icon,
 
 @media (min-width: 1024px) and (max-height: 768px) {
   .hero {
-    --hero-visual-size: min(540px, calc(100vh - 153px));
-    --hero-visual-size: min(540px, calc(100svh - 153px));
+    --hero-visual-size: min(480px, calc(100vh - 153px));
+    --hero-visual-size: min(480px, calc(100svh - 153px));
 
     height: calc(100vh - 89px);
     height: calc(100svh - 89px);
@@ -857,8 +857,10 @@ html[data-theme="light"] .moon-icon,
   }
 
   .hero {
+    --hero-visual-size: 270px;
+
     min-height: 600px;
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: minmax(0, 1fr) var(--hero-visual-size);
     gap: 32px;
     padding: 56px 40px;
   }
@@ -873,27 +875,27 @@ html[data-theme="light"] .moon-icon,
   }
 
   .hero-visual {
-    width: 300px;
-    height: 300px;
+    width: var(--hero-visual-size);
+    height: var(--hero-visual-size);
   }
 
   .portrait-ring {
-    top: 13px;
-    left: 15px;
-    width: 272px;
-    height: 272px;
+    top: 4.333%;
+    left: 5%;
+    width: 90.667%;
+    height: 90.667%;
   }
 
   .portrait-clip {
-    top: 15px;
-    left: 17px;
-    width: 268px;
-    height: 268px;
+    top: 5%;
+    left: 5.667%;
+    width: 89.333%;
+    height: 89.333%;
   }
 
   .portrait-clip img {
-    width: 268px;
-    height: 289px;
+    width: 100%;
+    height: 107.836%;
   }
 
   .section {
@@ -1026,6 +1028,8 @@ html[data-theme="light"] .moon-icon,
   }
 
   .hero {
+    --hero-visual-size: min(290px, 86vw);
+
     min-height: auto;
     grid-template-columns: minmax(0, 1fr);
     gap: 36px;
@@ -1050,29 +1054,29 @@ html[data-theme="light"] .moon-icon,
   }
 
   .hero-visual {
-    width: min(330px, 100%);
+    width: var(--hero-visual-size);
     height: auto;
     aspect-ratio: 1;
     justify-self: center;
   }
 
   .portrait-ring {
-    top: 14px;
-    left: 16px;
-    width: 298px;
-    height: 298px;
+    top: 4.242%;
+    left: 4.848%;
+    width: 90.303%;
+    height: 90.303%;
   }
 
   .portrait-clip {
-    top: 16px;
-    left: 18px;
-    width: 294px;
-    height: 294px;
+    top: 4.848%;
+    left: 5.455%;
+    width: 89.091%;
+    height: 89.091%;
   }
 
   .portrait-clip img {
-    width: 294px;
-    height: 317px;
+    width: 100%;
+    height: 107.823%;
   }
 
   .section {
@@ -1218,25 +1222,6 @@ html[data-theme="light"] .moon-icon,
 @media (max-width: 360px) {
   .theme-toggle {
     display: none;
-  }
-
-  .portrait-ring {
-    top: 4.242%;
-    left: 4.848%;
-    width: 90.303%;
-    height: 90.303%;
-  }
-
-  .portrait-clip {
-    top: 4.848%;
-    left: 5.455%;
-    width: 89.091%;
-    height: 89.091%;
-  }
-
-  .portrait-clip img {
-    width: 100%;
-    height: 107.823%;
   }
 
   .hero-actions {
