@@ -52,7 +52,7 @@ html[data-theme="light"] {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 16px;
+  scroll-padding-top: 105px;
   background: var(--bg);
 }
 
@@ -141,8 +141,9 @@ svg {
 }
 
 .site-header {
-  position: relative;
+  position: sticky;
   z-index: 20;
+  top: 0;
   padding: 12px 48px;
   border-bottom: 1px solid var(--border);
   background: var(--bg);
@@ -986,7 +987,7 @@ html[data-theme="light"] .moon-icon,
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 8px;
+    scroll-padding-top: 81px;
   }
 
   .site-header {
