@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Wahyu is a front-end developer based in Indonesia, focused on responsive, accessible, and high-performance websites."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <title>Wahyu — Front-end Developer</title>
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("wahyu-theme");
+        const theme = savedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="site-shell">
+      <header class="site-header" id="top">
+        <div class="navbar">
+          <div class="nav-identity">
+            <button
+              class="icon-button menu-toggle"
+              type="button"
+              aria-label="Open navigation menu"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <svg class="menu-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+              <svg class="close-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+
+            <a class="wordmark" href="#top" aria-label="Wahyu, back to top">WAHYU</a>
+
+            <nav class="desktop-nav" aria-label="Primary navigation">
+              <a href="#work">Work</a>
+              <a href="#skills">Skills</a>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </div>
+
+          <div class="nav-actions">
+            <button class="icon-button theme-toggle" type="button" aria-label="Switch to light theme">
+              <svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" />
+              </svg>
+              <svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M20.4 15.4A8.5 8.5 0 0 1 8.6 3.6 8.5 8.5 0 1 0 20.4 15.4Z" />
+              </svg>
+            </button>
+            <a class="button button-secondary whatsapp-header" href="#" data-link="whatsapp">WhatsApp</a>
+            <a class="button button-primary email-header" href="#" data-link="email">
+              <span class="email-wide">Email Me</span>
+              <span class="email-compact">Email</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden>
+          <a href="#work">Work <span>01</span></a>
+          <a href="#skills">Skills <span>02</span></a>
+          <a href="#about">About <span>03</span></a>
+          <a href="#services">Services <span>04</span></a>
+          <a href="#contact">Contact <span>05</span></a>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">FRONT-END DEVELOPER · INDONESIA</p>
+            <h1 id="hero-title">I build clean, fast<br />websites.</h1>
+            <p class="hero-description">
+              Hi, my name is Wahyu. Front-end developer based in Indonesia, working with HTML, CSS, JavaScript, and modern frameworks.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#" data-link="email">
+                Start a project
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a class="button button-secondary" href="#work">View selected work</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Portrait of Wahyu">
+            <div class="portrait-ring" aria-hidden="true"></div>
+            <div class="portrait-clip">
+              <img src="assets/portrait.webp" alt="Portrait of Wahyu" width="864" height="1080" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+          <div class="section-heading">
+            <h2 id="skills-title">Technologies I work with.</h2>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-card">
+              <div class="skill-card-header">
+                <span>01</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14" />
+                </svg>
+              </div>
+              <div>
+                <h3>Core technologies</h3>
+                <p>HTML, CSS, and JavaScript for responsive, accessible web interfaces.</p>
+              </div>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-card-header">
+                <span>02</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5" />
+                </svg>
+              </div>
+              <div>
+                <h3>Frameworks &amp; tools</h3>
+                <p>Modern frameworks, utility-first CSS, Git, and current build tools.</p>
+              </div>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-card-header">
+                <span>03</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m12 2 2.1 2.2 3-.1.9 2.9 2.5 1.7-1.1 2.8 1.1 2.8-2.5 1.7-.9 2.9-3-.1L12 22l-2.1-2.2-3 .1-.9-2.9-2.5-1.7 1.1-2.8-1.1-2.8L6 7l.9-2.9 3 .1L12 2Z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
+              <div>
+                <h3>Best practices</h3>
+                <p>Clean code, performance, accessibility, and scalable design systems.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section about-section" id="about" aria-labelledby="about-title">
+          <div class="about-copy">
+            <h2 id="about-title">Front-end development,<br />focused on usability.</h2>
+            <p>
+              I build responsive websites with HTML, CSS, JavaScript, and modern frameworks. My work focuses on accessible
+              structure, maintainable code, and performance across screen sizes.
+            </p>
+          </div>
+          <dl class="metrics">
+            <div>
+              <dt>YEARS BUILDING</dt>
+              <dd>4+</dd>
+            </div>
+            <div>
+              <dt>SHIPPED PROJECTS</dt>
+              <dd>12</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="section work-section" id="work" aria-labelledby="work-title">
+          <div class="section-heading project-heading">
+            <h2 id="work-title">Selected front-end projects.</h2>
+            <p>04 PROJECTS / 2024–2025</p>
+          </div>
+
+          <div class="projects-grid">
+            <a class="project-card" href="#" data-link="projectIndramayu">
+              <img src="assets/projects-1.png" alt="Preview of the Indramayu City Website" width="1877" height="1173" />
+              <div class="project-content">
+                <div>
+                  <h3>Indramayu City Website</h3>
+                  <p>A responsive civic information website for Indramayu, West Java.</p>
+                </div>
+                <div class="project-meta">
+                  <span>HTML · CSS</span>
+                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" data-link="projectDicoding">
+              <img src="assets/projects-2.png" alt="Preview of the Dicoding Landing Page" width="1919" height="1199" />
+              <div class="project-content">
+                <div>
+                  <h3>Dicoding Landing Page</h3>
+                  <p>A responsive course landing page built with semantic HTML and CSS.</p>
+                </div>
+                <div class="project-meta">
+                  <span>HTML · CSS</span>
+                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" data-link="projectCodePolitan">
+              <img src="assets/projects-3.png" alt="Preview of the CodePolitan Landing Page" width="1898" height="1171" />
+              <div class="project-content">
+                <div>
+                  <h3>CodePolitan Landing Page</h3>
+                  <p>An education landing page implemented with JavaScript and Bootstrap 4.</p>
+                </div>
+                <div class="project-meta">
+                  <span>JS · BOOTSTRAP</span>
+                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
+                </div>
+              </div>
+            </a>
+
+            <a class="project-card" href="#" data-link="projectMuseum">
+              <img src="assets/projects-4.png" alt="Preview of the Museum of Art website" width="1896" height="1177" />
+              <div class="project-content">
+                <div>
+                  <h3>Museum of Art</h3>
+                  <p>A responsive museum website built with jQuery and Bootstrap.</p>
+                </div>
+                <div class="project-meta">
+                  <span>JQUERY · BOOTSTRAP</span>
+                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="section services-section" id="services" aria-labelledby="services-title">
+          <div class="section-heading">
+            <h2 id="services-title">Front-end services.</h2>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-label">DEVELOPMENT</div>
+              <div class="service-copy">
+                <h3>Front-end development</h3>
+                <p>Web applications and responsive interfaces built with modern frameworks.</p>
+              </div>
+              <div class="service-footer">
+                <span>WEB · MOBILE</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </div>
+            </article>
+
+            <article class="service-card">
+              <div class="service-label">DESIGN</div>
+              <div class="service-copy">
+                <h3>UI/UX design</h3>
+                <p>Clear web and mobile interface systems created with modern design tools.</p>
+              </div>
+              <div class="service-footer">
+                <span>PRODUCT · SYSTEMS</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-section" id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Have a website to build?</h2>
+          <p>Available for front-end development projects and collaborations.</p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="#" data-link="email">
+              Email Me
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+            <a class="button button-secondary" href="#" data-link="whatsapp">WhatsApp</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a class="footer-wordmark" href="#top">WAHYU</a>
+            <p>Front-end developer · Indonesia</p>
+          </div>
+          <div class="footer-links">
+            <nav aria-label="Footer navigation">
+              <h2>EXPLORE</h2>
+              <a href="#work">Work</a>
+              <a href="#skills">Skills</a>
+              <a href="#about">About</a>
+              <a href="#services">Services</a>
+            </nav>
+            <nav aria-label="Social links">
+              <h2>CONNECT</h2>
+              <a href="#" data-link="email">Email</a>
+              <a href="#" data-link="whatsapp">WhatsApp</a>
+              <a href="#" data-link="github">GitHub</a>
+              <a href="#" data-link="linkedin">LinkedIn</a>
+            </nav>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 WAHYU. ALL RIGHTS RESERVED.</p>
+        </div>
+      </footer>
+    </div>
+
+    <div class="link-notice" role="status" aria-live="polite" hidden>Link placeholder — update it in app.js.</div>
+    <script src="app.js"></script>
+  </body>
+</html>
