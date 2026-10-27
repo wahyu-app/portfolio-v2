@@ -243,6 +243,17 @@ svg {
   height: 18px;
 }
 
+.theme-toggle {
+  width: 32px;
+  flex-basis: 32px;
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+
 .menu-toggle {
   display: none;
 }
