@@ -682,7 +682,7 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   aspect-ratio: 16 / 9;
   flex: 0 0 auto;
   background: var(--surface-raised);
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .project-content {
