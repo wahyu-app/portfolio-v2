@@ -919,6 +919,12 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   cursor: default;
 }
 
+@media (min-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1023px) {
   .site-header {
     padding-inline: 40px;
