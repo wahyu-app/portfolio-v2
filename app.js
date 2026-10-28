@@ -18,14 +18,23 @@ const SITE_LINKS = Object.freeze({
 const root = document.documentElement;
 const themeToggle = document.querySelector(".theme-toggle");
 const themeColor = document.querySelector('meta[name="theme-color"]');
+const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobile-menu");
 const mobileMenuLinks = [...mobileMenu.querySelectorAll("a")];
+const navLinks = [...document.querySelectorAll(".desktop-nav a, .mobile-menu a")];
+const trackedSections = [...document.querySelectorAll("main section[id]")];
+const heroSection = document.querySelector(".hero");
+const heroVisual = document.querySelector(".hero-visual");
+const scrollProgress = document.querySelector(".scroll-progress span");
 const linkNotice = document.querySelector(".link-notice");
 const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
+const finePointer = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
 const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let noticeTimer;
+let scrollFrame;
+let parallaxFrame;
 
 function applyTheme(theme, persist = true) {
   const nextTheme = theme === "light" ? "light" : "dark";
@@ -102,7 +111,6 @@ function prepareRevealGroup(elements, stagger = 70) {
 }
 
 function initializeHeroMotion() {
-  const heroVisual = document.querySelector(".hero-visual");
   const heroItems = prepareRevealGroup(
     [
       document.querySelector(".hero h1"),
@@ -120,6 +128,101 @@ function initializeHeroMotion() {
       heroItems.forEach((item) => item.classList.add("is-revealed"));
     });
   });
+}
+
+function setActiveSection(sectionId) {
+  navLinks.forEach((link) => {
+    const isActive = sectionId && link.hash === `#${sectionId}`;
+
+    if (isActive) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function updatePageScrollState() {
+  const scrollTop = window.scrollY;
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? Math.min(Math.max(scrollTop / scrollableHeight, 0), 1) : 0;
+
+  siteHeader.classList.toggle("is-scrolled", scrollTop > 12);
+  scrollProgress.style.transform = `scaleX(${progress})`;
+
+  if (scrollTop < Math.min(window.innerHeight * 0.35, 280)) {
+    setActiveSection(null);
+    scrollFrame = null;
+    return;
+  }
+
+  const viewportMarker = scrollTop + Math.min(window.innerHeight * 0.42, 340);
+  const isAtPageEnd = scrollTop + window.innerHeight >= document.documentElement.scrollHeight - 2;
+  let activeSection = null;
+
+  trackedSections.forEach((section) => {
+    if (section.offsetTop <= viewportMarker) {
+      activeSection = section.id;
+    }
+  });
+
+  if (isAtPageEnd) {
+    activeSection = trackedSections.at(-1)?.id || activeSection;
+  }
+
+  setActiveSection(activeSection);
+  scrollFrame = null;
+}
+
+function requestScrollUpdate() {
+  if (scrollFrame) {
+    return;
+  }
+
+  scrollFrame = requestAnimationFrame(updatePageScrollState);
+}
+
+function resetHeroParallax() {
+  cancelAnimationFrame(parallaxFrame);
+  heroVisual.style.setProperty("--hero-parallax-x", "0px");
+  heroVisual.style.setProperty("--hero-parallax-y", "0px");
+  heroVisual.style.setProperty("--ring-parallax-x", "0px");
+  heroVisual.style.setProperty("--ring-parallax-y", "0px");
+}
+
+function updateHeroParallax(event) {
+  if (!finePointer.matches || reducedMotion.matches) {
+    return;
+  }
+
+  const bounds = heroSection.getBoundingClientRect();
+  const relativeX = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1) - 0.5;
+  const relativeY = Math.min(Math.max((event.clientY - bounds.top) / bounds.height, 0), 1) - 0.5;
+  const visualX = relativeX * 16;
+  const visualY = relativeY * 12;
+
+  cancelAnimationFrame(parallaxFrame);
+  parallaxFrame = requestAnimationFrame(() => {
+    heroVisual.style.setProperty("--hero-parallax-x", `${visualX.toFixed(2)}px`);
+    heroVisual.style.setProperty("--hero-parallax-y", `${visualY.toFixed(2)}px`);
+    heroVisual.style.setProperty("--ring-parallax-x", `${(-visualX * 0.4).toFixed(2)}px`);
+    heroVisual.style.setProperty("--ring-parallax-y", `${(-visualY * 0.4).toFixed(2)}px`);
+  });
+}
+
+function initializeInteractiveMotion() {
+  window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollUpdate);
+  heroSection.addEventListener("pointermove", updateHeroParallax, { passive: true });
+  heroSection.addEventListener("pointerleave", resetHeroParallax);
+  finePointer.addEventListener("change", resetHeroParallax);
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) {
+      resetHeroParallax();
+    }
+  });
+
+  updatePageScrollState();
 }
 
 function initializeScrollMotion() {
@@ -209,3 +312,4 @@ systemTheme.addEventListener("change", (event) => {
 applyTheme(root.dataset.theme, false);
 hydrateConfiguredLinks();
 initializeMotion();
+initializeInteractiveMotion();

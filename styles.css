@@ -25,6 +25,7 @@
   --accent: #ff6308;
   --button-primary-bg: #ffffff;
   --button-primary-text: #0a0a0a;
+  --header-bg: rgb(10 10 10 / 84%);
   --focus: #ff7a2d;
   --radius-card: 16px;
   --radius-pill: 999px;
@@ -41,6 +42,7 @@ html[data-theme="light"] {
   --accent: #d94f00;
   --button-primary-bg: #111111;
   --button-primary-text: #ffffff;
+  --header-bg: rgb(245 245 242 / 86%);
   --focus: #b74605;
 }
 
@@ -64,6 +66,7 @@ body {
   font-family: "xVf", Arial, sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
 body.menu-open {
@@ -133,11 +136,32 @@ svg {
   translate: 0;
 }
 
+.scroll-progress {
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
 .site-shell {
   width: min(100%, 1440px);
   margin: 0 auto;
   overflow: clip;
   background: var(--bg);
+  transition: background-color 220ms ease;
 }
 
 .site-header {
@@ -147,6 +171,19 @@ svg {
   padding: 12px 48px;
   border-bottom: 1px solid var(--border);
   background: var(--bg);
+  transition:
+    padding 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.site-header.is-scrolled {
+  padding-block: 8px;
+  background: var(--header-bg);
+  box-shadow: 0 10px 32px rgb(0 0 0 / 8%);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
 .navbar {
@@ -155,6 +192,11 @@ svg {
   align-items: center;
   justify-content: space-between;
   padding-inline: 20px;
+  transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header.is-scrolled .navbar {
+  height: 58px;
 }
 
 .nav-identity,
@@ -207,6 +249,7 @@ svg {
 }
 
 .desktop-nav a:hover::after,
+.desktop-nav a[aria-current="location"]::after,
 .footer-links a:hover::after {
   transform: scaleX(1);
   transform-origin: left;
@@ -245,14 +288,19 @@ svg {
 }
 
 .theme-toggle {
+  position: relative;
   width: 32px;
   flex-basis: 32px;
 }
 
 .theme-toggle svg {
+  position: absolute;
   width: 16px;
   height: 16px;
   stroke-width: 2;
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .menu-toggle {
@@ -260,15 +308,32 @@ svg {
 }
 
 .close-icon,
-.moon-icon,
-html[data-theme="light"] .sun-icon,
 .menu-toggle[aria-expanded="true"] .menu-icon {
   display: none;
 }
 
-html[data-theme="light"] .moon-icon,
 .menu-toggle[aria-expanded="true"] .close-icon {
   display: block;
+}
+
+.theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(-70deg) scale(0.65);
+}
+
+html[data-theme="light"] .theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(70deg) scale(0.65);
+}
+
+html[data-theme="light"] .theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 .button {
@@ -329,6 +394,7 @@ html[data-theme="light"] .moon-icon,
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   box-shadow: 0 18px 40px rgb(0 0 0 / 20%);
+  transition: background-color 220ms ease, border-color 220ms ease;
 }
 
 .mobile-menu a {
@@ -346,6 +412,10 @@ html[data-theme="light"] .moon-icon,
   font-family: "GeistMono", monospace;
   font-size: 10px;
   letter-spacing: 1px;
+}
+
+.mobile-menu a[aria-current="location"] {
+  color: var(--accent);
 }
 
 .hero {
@@ -396,9 +466,17 @@ html[data-theme="light"] .moon-icon,
 }
 
 .hero-visual {
+  --hero-parallax-x: 0px;
+  --hero-parallax-y: 0px;
+  --ring-parallax-x: 0px;
+  --ring-parallax-y: 0px;
+
   position: relative;
   width: var(--hero-visual-size);
   height: var(--hero-visual-size);
+  transform: translate3d(var(--hero-parallax-x), var(--hero-parallax-y), 0);
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .portrait-ring {
@@ -409,6 +487,8 @@ html[data-theme="light"] .moon-icon,
   height: 90.37%;
   border: 1px solid var(--border);
   border-radius: 50%;
+  transform: translate3d(var(--ring-parallax-x), var(--ring-parallax-y), 0);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease;
 }
 
 .portrait-clip {
@@ -593,7 +673,7 @@ html[data-theme="light"] .moon-icon,
   overflow: hidden;
   border-radius: var(--radius-card);
   background: var(--surface);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
 }
 
 .project-card:hover,
@@ -602,11 +682,40 @@ html[data-theme="light"] .moon-icon,
   box-shadow: 0 20px 52px rgb(0 0 0 / 20%);
 }
 
-.project-card > img {
+.project-media {
+  position: relative;
   width: 100%;
   height: 250px;
   flex: 0 0 250px;
+  overflow: hidden;
+}
+
+.project-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(0 0 0 / 12%), transparent 45%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease;
+}
+
+.project-media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.project-card:hover .project-media img,
+.project-card:focus-visible .project-media img {
+  transform: scale(1.03);
+}
+
+.project-card:hover .project-media::after,
+.project-card:focus-visible .project-media::after {
+  opacity: 1;
 }
 
 .project-content {
@@ -684,6 +793,7 @@ html[data-theme="light"] .moon-icon,
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
+  transition: background-color 220ms ease, border-color 220ms ease;
 }
 
 .service-label {
@@ -943,7 +1053,7 @@ html[data-theme="light"] .moon-icon,
     height: 360px;
   }
 
-  .project-card > img {
+  .project-media {
     height: 250px;
     flex-basis: 250px;
   }
@@ -994,8 +1104,16 @@ html[data-theme="light"] .moon-icon,
     padding: 8px 20px;
   }
 
+  .site-header.is-scrolled {
+    padding-block: 4px;
+  }
+
   .navbar {
     height: 56px;
+  }
+
+  .site-header.is-scrolled .navbar {
+    height: 52px;
   }
 
   .menu-toggle {
@@ -1155,7 +1273,7 @@ html[data-theme="light"] .moon-icon,
     height: 380px;
   }
 
-  .project-card > img {
+  .project-media {
     height: 200px;
     flex-basis: 200px;
   }
@@ -1288,7 +1406,8 @@ html[data-theme="light"] .moon-icon,
     translate 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
     scale 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
     transform 220ms ease,
-    box-shadow 220ms ease;
+    box-shadow 220ms ease,
+    background-color 220ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1303,6 +1422,13 @@ html[data-theme="light"] .moon-icon,
     translate: none !important;
     scale: none !important;
     transition: none !important;
+  }
+
+  .hero-visual,
+  .portrait-ring,
+  .project-media img,
+  .theme-toggle svg {
+    transform: none !important;
   }
 
   *,
