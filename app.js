@@ -220,12 +220,7 @@ function initializeHeroMotion() {
   );
 
   heroVisual?.classList.add("motion-reveal--scale");
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      heroItems.forEach((item) => item.classList.add("is-revealed"));
-    });
-  });
+  return heroItems;
 }
 
 function setActiveSection(sectionId) {
@@ -287,8 +282,9 @@ function initializeInteractiveMotion() {
   updatePageScrollState();
 }
 
-function initializeScrollMotion() {
+function initializeScrollMotion(heroItems = []) {
   if (!("IntersectionObserver" in window)) {
+    heroItems.forEach((item) => item.classList.add("is-revealed"));
     return;
   }
 
@@ -304,16 +300,23 @@ function initializeScrollMotion() {
     [document.querySelectorAll(".footer-brand, .footer-links nav, .footer-bottom"), 70],
   ];
 
-  const revealItems = revealGroups.flatMap(([elements, stagger]) => prepareRevealGroup(elements, stagger));
+  const revealItems = [
+    ...heroItems,
+    ...revealGroups.flatMap(([elements, stagger]) => prepareRevealGroup(elements, stagger)),
+  ];
   const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
           return;
         }
 
-        entry.target.classList.add("is-revealed");
-        observer.unobserve(entry.target);
+        const viewportTop = entry.rootBounds?.top ?? 0;
+
+        if (entry.boundingClientRect.bottom <= viewportTop) {
+          entry.target.classList.remove("is-revealed");
+        }
       });
     },
     {
@@ -330,8 +333,8 @@ function initializeMotion() {
     return;
   }
 
-  initializeHeroMotion();
-  initializeScrollMotion();
+  const heroItems = initializeHeroMotion();
+  initializeScrollMotion(heroItems);
 }
 
 themeToggle.addEventListener("click", () => {
