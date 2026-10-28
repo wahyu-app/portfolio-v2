@@ -307,21 +307,19 @@ function initializeScrollMotion(heroItems = []) {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
           entry.target.classList.add("is-revealed");
           return;
         }
 
-        const viewportTop = entry.rootBounds?.top ?? 0;
-
-        if (entry.boundingClientRect.bottom <= viewportTop) {
+        if (!entry.isIntersecting) {
           entry.target.classList.remove("is-revealed");
         }
       });
     },
     {
-      threshold: 0.15,
-      rootMargin: "0px 0px -10% 0px",
+      threshold: [0, 0.15],
+      rootMargin: "0px",
     },
   );
 
