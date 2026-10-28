@@ -176,66 +176,26 @@
         <section class="section work-section" id="work" aria-labelledby="work-title">
           <div class="section-heading project-heading">
             <h2 id="work-title">Selected front-end projects.</h2>
-            <p>04 PROJECTS / 2024–2025</p>
+            <p data-project-summary>00 PROJECTS</p>
           </div>
 
-          <div class="projects-grid">
-            <a class="project-card" href="#" data-link="projectIndramayu">
-              <img src="assets/projects-1.png" alt="Preview of the Indramayu City Website" width="1877" height="1173" />
-              <div class="project-content">
-                <div>
-                  <h3>Indramayu City Website</h3>
-                  <p>A responsive civic information website for Indramayu, West Java.</p>
-                </div>
-                <div class="project-meta">
-                  <span>HTML · CSS</span>
-                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
-                </div>
-              </div>
-            </a>
+          <div class="projects-grid" data-projects></div>
 
-            <a class="project-card" href="#" data-link="projectDicoding">
-              <img src="assets/projects-2.png" alt="Preview of the Dicoding Landing Page" width="1919" height="1199" />
+          <template id="project-card-template">
+            <a class="project-card" href="#">
+              <img src="" alt="" width="1600" height="900" loading="lazy" decoding="async" />
               <div class="project-content">
                 <div>
-                  <h3>Dicoding Landing Page</h3>
-                  <p>A responsive course landing page built with semantic HTML and CSS.</p>
+                  <h3></h3>
+                  <p></p>
                 </div>
                 <div class="project-meta">
-                  <span>HTML · CSS</span>
+                  <span data-project-technologies></span>
                   <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
                 </div>
               </div>
             </a>
-
-            <a class="project-card" href="#" data-link="projectCodePolitan">
-              <img src="assets/projects-3.png" alt="Preview of the CodePolitan Landing Page" width="1898" height="1171" />
-              <div class="project-content">
-                <div>
-                  <h3>CodePolitan Landing Page</h3>
-                  <p>An education landing page implemented with JavaScript and Bootstrap 4.</p>
-                </div>
-                <div class="project-meta">
-                  <span>JS · BOOTSTRAP</span>
-                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
-                </div>
-              </div>
-            </a>
-
-            <a class="project-card" href="#" data-link="projectMuseum">
-              <img src="assets/projects-4.png" alt="Preview of the Museum of Art website" width="1896" height="1177" />
-              <div class="project-content">
-                <div>
-                  <h3>Museum of Art</h3>
-                  <p>A responsive museum website built with jQuery and Bootstrap.</p>
-                </div>
-                <div class="project-meta">
-                  <span>JQUERY · BOOTSTRAP</span>
-                  <span class="project-link">View project <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10" /></svg></span>
-                </div>
-              </div>
-            </a>
-          </div>
+          </template>
         </section>
 
         <section class="section services-section" id="services" aria-labelledby="services-title">

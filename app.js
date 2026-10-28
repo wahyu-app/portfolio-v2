@@ -1,4 +1,57 @@
 /**
+ * Update the Work section here.
+ * - Add, remove, or reorder objects to update the project cards.
+ * - Leave `url` empty to keep the project link as a placeholder.
+ * - Use a four-digit number for `year` so the summary stays automatic.
+ */
+const WORK_PROJECTS = Object.freeze([
+  {
+    title: "Indramayu City Website",
+    description: "A responsive civic information website for Indramayu, West Java.",
+    technologies: ["HTML", "CSS"],
+    image: "assets/projects-1.png",
+    imageAlt: "Preview of the Indramayu City Website",
+    imageWidth: 1877,
+    imageHeight: 1173,
+    url: "",
+    year: 2024,
+  },
+  {
+    title: "Dicoding Landing Page",
+    description: "A responsive course landing page built with semantic HTML and CSS.",
+    technologies: ["HTML", "CSS"],
+    image: "assets/projects-2.png",
+    imageAlt: "Preview of the Dicoding Landing Page",
+    imageWidth: 1919,
+    imageHeight: 1199,
+    url: "",
+    year: 2024,
+  },
+  {
+    title: "CodePolitan Landing Page",
+    description: "An education landing page implemented with JavaScript and Bootstrap 4.",
+    technologies: ["JS", "BOOTSTRAP"],
+    image: "assets/projects-3.png",
+    imageAlt: "Preview of the CodePolitan Landing Page",
+    imageWidth: 1898,
+    imageHeight: 1171,
+    url: "",
+    year: 2025,
+  },
+  {
+    title: "Museum of Art",
+    description: "A responsive museum website built with jQuery and Bootstrap.",
+    technologies: ["JQUERY", "BOOTSTRAP"],
+    image: "assets/projects-4.png",
+    imageAlt: "Preview of the Museum of Art website",
+    imageWidth: 1896,
+    imageHeight: 1177,
+    url: "",
+    year: 2025,
+  },
+]);
+
+/**
  * Replace the empty strings below with real destinations.
  * Examples:
  * email: "mailto:hello@example.com"
@@ -9,10 +62,6 @@ const SITE_LINKS = Object.freeze({
   whatsapp: "",
   github: "",
   linkedin: "",
-  projectIndramayu: "",
-  projectDicoding: "",
-  projectCodePolitan: "",
-  projectMuseum: "",
 });
 
 const root = document.documentElement;
@@ -27,6 +76,9 @@ const trackedSections = [...document.querySelectorAll("main section[id]")];
 const heroVisual = document.querySelector(".hero-visual");
 const scrollProgress = document.querySelector(".scroll-progress span");
 const linkNotice = document.querySelector(".link-notice");
+const projectsGrid = document.querySelector("[data-projects]");
+const projectSummary = document.querySelector("[data-project-summary]");
+const projectCardTemplate = document.querySelector("#project-card-template");
 const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
 const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -71,29 +123,78 @@ function showPlaceholderNotice() {
   }, 2600);
 }
 
+function configureLink(link, destination, placeholderTitle) {
+  if (!destination) {
+    link.href = "#";
+    link.setAttribute("aria-disabled", "true");
+    link.setAttribute("title", placeholderTitle);
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showPlaceholderNotice();
+    });
+    return;
+  }
+
+  link.href = destination;
+  link.removeAttribute("aria-disabled");
+  link.removeAttribute("title");
+
+  if (/^https?:\/\//.test(destination)) {
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  }
+}
+
 function hydrateConfiguredLinks() {
   document.querySelectorAll("[data-link]").forEach((link) => {
     const destination = SITE_LINKS[link.dataset.link];
-
-    if (!destination) {
-      link.setAttribute("aria-disabled", "true");
-      link.setAttribute("title", "Placeholder link — update SITE_LINKS in app.js");
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        showPlaceholderNotice();
-      });
-      return;
-    }
-
-    link.href = destination;
-    link.removeAttribute("aria-disabled");
-    link.removeAttribute("title");
-
-    if (/^https?:\/\//.test(destination)) {
-      link.target = "_blank";
-      link.rel = "noreferrer";
-    }
+    configureLink(link, destination, "Placeholder link — update SITE_LINKS in app.js");
   });
+}
+
+function formatProjectSummary(projects) {
+  const count = String(projects.length).padStart(2, "0");
+  const label = projects.length === 1 ? "PROJECT" : "PROJECTS";
+  const years = projects
+    .map(({ year }) => Number(year))
+    .filter((year) => Number.isInteger(year) && year >= 1000 && year <= 9999);
+
+  if (!years.length) {
+    return `${count} ${label}`;
+  }
+
+  const firstYear = Math.min(...years);
+  const lastYear = Math.max(...years);
+  const yearLabel = firstYear === lastYear ? `${firstYear}` : `${firstYear}–${lastYear}`;
+
+  return `${count} ${label} / ${yearLabel}`;
+}
+
+function renderWorkProjects() {
+  if (!projectsGrid || !projectSummary || !projectCardTemplate) {
+    return;
+  }
+
+  const projectCards = document.createDocumentFragment();
+
+  WORK_PROJECTS.forEach((project) => {
+    const card = projectCardTemplate.content.firstElementChild.cloneNode(true);
+    const image = card.querySelector("img");
+
+    image.src = project.image;
+    image.alt = project.imageAlt;
+    image.width = project.imageWidth;
+    image.height = project.imageHeight;
+    card.querySelector("h3").textContent = project.title;
+    card.querySelector(".project-content p").textContent = project.description;
+    card.querySelector("[data-project-technologies]").textContent = project.technologies.join(" · ");
+
+    configureLink(card, project.url, "Placeholder project link — update WORK_PROJECTS in app.js");
+    projectCards.append(card);
+  });
+
+  projectsGrid.replaceChildren(projectCards);
+  projectSummary.textContent = formatProjectSummary(WORK_PROJECTS);
 }
 
 function prepareRevealGroup(elements, stagger = 70) {
@@ -270,6 +371,7 @@ systemTheme.addEventListener("change", (event) => {
   }
 });
 
+renderWorkProjects();
 applyTheme(root.dataset.theme, false);
 hydrateConfiguredLinks();
 initializeMotion();
