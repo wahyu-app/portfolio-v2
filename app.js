@@ -24,6 +24,7 @@ const mobileMenuLinks = [...mobileMenu.querySelectorAll("a")];
 const linkNotice = document.querySelector(".link-notice");
 const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
 const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let noticeTimer;
 
 function applyTheme(theme, persist = true) {
@@ -89,6 +90,85 @@ function hydrateConfiguredLinks() {
   });
 }
 
+function prepareRevealGroup(elements, stagger = 70) {
+  const items = [...elements].filter(Boolean);
+
+  items.forEach((item, index) => {
+    item.classList.add("motion-reveal");
+    item.style.setProperty("--reveal-delay", `${index * stagger}ms`);
+  });
+
+  return items;
+}
+
+function initializeHeroMotion() {
+  const heroVisual = document.querySelector(".hero-visual");
+  const heroItems = prepareRevealGroup(
+    [
+      document.querySelector(".hero h1"),
+      document.querySelector(".hero-description"),
+      document.querySelector(".hero-actions"),
+      heroVisual,
+    ],
+    80,
+  );
+
+  heroVisual?.classList.add("motion-reveal--scale");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      heroItems.forEach((item) => item.classList.add("is-revealed"));
+    });
+  });
+}
+
+function initializeScrollMotion() {
+  if (!("IntersectionObserver" in window)) {
+    return;
+  }
+
+  const revealGroups = [
+    [document.querySelectorAll(".skills-section .section-heading"), 0],
+    [document.querySelectorAll(".skill-card"), 70],
+    [document.querySelectorAll(".about-copy, .metrics > div"), 80],
+    [document.querySelectorAll(".work-section .section-heading"), 0],
+    [document.querySelectorAll(".project-card"), 80],
+    [document.querySelectorAll(".services-section .section-heading"), 0],
+    [document.querySelectorAll(".service-card"), 90],
+    [document.querySelectorAll(".contact-section > *"), 70],
+    [document.querySelectorAll(".footer-brand, .footer-links nav, .footer-bottom"), 70],
+  ];
+
+  const revealItems = revealGroups.flatMap(([elements, stagger]) => prepareRevealGroup(elements, stagger));
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -10% 0px",
+    },
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+}
+
+function initializeMotion() {
+  if (reducedMotion.matches) {
+    return;
+  }
+
+  initializeHeroMotion();
+  initializeScrollMotion();
+}
+
 themeToggle.addEventListener("click", () => {
   applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
 });
@@ -128,3 +208,4 @@ systemTheme.addEventListener("change", (event) => {
 
 applyTheme(root.dataset.theme, false);
 hydrateConfiguredLinks();
+initializeMotion();
