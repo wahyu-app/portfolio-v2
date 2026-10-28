@@ -1,6 +1,6 @@
-# Portfolio V2
+# Portfolio
 
-A responsive personal portfolio for Wahyu, a front-end developer based in Indonesia. The site presents skills, background, featured work, services, and contact options in a focused single-page experience.
+A responsive personal portfolio for a front-end developer. The site presents skills, background, featured work, services, and contact options in a focused single-page experience.
 
 ## Features
 
@@ -25,14 +25,7 @@ The project has no framework, package manager, or build step.
 
 ## Getting Started
 
-Clone the repository:
-
-```bash
-git clone git@github.com:wahyu-devs/portfolio-v2.git
-cd portfolio-v2
-```
-
-Run a local static server:
+Clone or download the repository, then run a local static server from the project directory:
 
 ```bash
 python3 -m http.server 8000
@@ -64,10 +57,10 @@ Update `SITE_LINKS` near the top of `app.js`:
 
 ```js
 const SITE_LINKS = Object.freeze({
-  email: "mailto:hello@example.com",
-  whatsapp: "https://wa.me/6281234567890",
-  github: "https://github.com/username",
-  linkedin: "https://www.linkedin.com/in/username",
+  email: "mailto:you@example.com",
+  whatsapp: "https://wa.me/<number>",
+  github: "https://github.com/<username>",
+  linkedin: "https://www.linkedin.com/in/<username>",
 });
 ```
 
