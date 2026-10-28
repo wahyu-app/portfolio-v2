@@ -742,12 +742,21 @@ html[data-theme="light"] .theme-toggle .moon-icon {
 .service-card {
   display: grid;
   height: 220px;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  transition: background-color 220ms ease, border-color 220ms ease;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 52px rgb(0 0 0 / 20%);
 }
 
 .service-label {
@@ -778,18 +787,6 @@ html[data-theme="light"] .theme-toggle .moon-icon {
 
 .service-footer span {
   align-self: end;
-}
-
-.service-footer svg {
-  width: 20px;
-  height: 20px;
-  align-self: end;
-  justify-self: end;
-  transition: transform 180ms ease;
-}
-
-.service-card:hover .service-footer svg {
-  transform: translateX(4px);
 }
 
 .contact-section {
@@ -1343,14 +1340,16 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   scale: 1;
 }
 
-.project-card.motion-reveal {
+.project-card.motion-reveal,
+.service-card.motion-reveal {
   transition:
     opacity 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
     translate 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
     scale 520ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay),
     transform 220ms ease,
     box-shadow 220ms ease,
-    background-color 220ms ease;
+    background-color 220ms ease,
+    border-color 220ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
