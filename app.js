@@ -11,8 +11,6 @@ const WORK_PROJECTS = Object.freeze([
     technologies: ["HTML", "CSS"],
     image: "assets/projects-1.png",
     imageAlt: "Preview of the Indramayu City Website",
-    imageWidth: 1872,
-    imageHeight: 1053,
     url: "",
     year: 2024,
   },
@@ -22,8 +20,6 @@ const WORK_PROJECTS = Object.freeze([
     technologies: ["HTML", "CSS"],
     image: "assets/projects-2.png",
     imageAlt: "Preview of the Dicoding Landing Page",
-    imageWidth: 1904,
-    imageHeight: 1071,
     url: "",
     year: 2024,
   },
@@ -33,8 +29,6 @@ const WORK_PROJECTS = Object.freeze([
     technologies: ["JS", "BOOTSTRAP"],
     image: "assets/projects-3.png",
     imageAlt: "Preview of the CodePolitan Landing Page",
-    imageWidth: 1888,
-    imageHeight: 1062,
     url: "",
     year: 2025,
   },
@@ -44,8 +38,6 @@ const WORK_PROJECTS = Object.freeze([
     technologies: ["JQUERY", "BOOTSTRAP"],
     image: "assets/projects-4.png",
     imageAlt: "Preview of the Museum of Art website",
-    imageWidth: 1888,
-    imageHeight: 1062,
     url: "",
     year: 2025,
   },
@@ -183,8 +175,6 @@ function renderWorkProjects() {
 
     image.src = project.image;
     image.alt = project.imageAlt;
-    image.width = project.imageWidth;
-    image.height = project.imageHeight;
     card.querySelector("h3").textContent = project.title;
     card.querySelector(".project-content p").textContent = project.description;
     card.querySelector("[data-project-technologies]").textContent = project.technologies.join(" · ");
