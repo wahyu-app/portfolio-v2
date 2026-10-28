@@ -426,8 +426,8 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   --hero-visual-size: 480px;
 
   display: grid;
-  min-height: calc(100vh - 89px);
-  min-height: calc(100svh - 89px);
+  min-height: clamp(680px, calc(100vh - 89px), 900px);
+  min-height: clamp(680px, calc(100svh - 89px), 900px);
   grid-template-columns: minmax(0, 1fr) var(--hero-visual-size);
   gap: 64px;
   align-items: center;
