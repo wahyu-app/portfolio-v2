@@ -7,13 +7,20 @@
       name="description"
       content="Wahyu is a front-end developer based in Indonesia, focused on responsive, accessible, and high-performance websites."
     />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta
+      name="theme-color"
+      content="#0a0a0a"
+      data-dark-color="#0a0a0a"
+      data-light-color="#f5f5f2"
+    />
     <title>Wahyu — Front-end Developer</title>
     <script>
       (() => {
         const savedTheme = localStorage.getItem("wahyu-theme");
         const theme = savedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        const themeColor = document.querySelector('meta[name="theme-color"]');
         document.documentElement.dataset.theme = theme;
+        themeColor.content = themeColor.dataset[`${theme}Color`];
       })();
     </script>
     <link rel="stylesheet" href="styles.css" />

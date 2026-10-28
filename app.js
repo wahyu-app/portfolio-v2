@@ -89,7 +89,7 @@ function applyTheme(theme, persist = true) {
   const nextTheme = theme === "light" ? "light" : "dark";
   root.dataset.theme = nextTheme;
   themeToggle.setAttribute("aria-label", `Switch to ${nextTheme === "dark" ? "light" : "dark"} theme`);
-  themeColor.setAttribute("content", nextTheme === "dark" ? "#0a0a0a" : "#f5f5f2");
+  themeColor.setAttribute("content", themeColor.dataset[`${nextTheme}Color`]);
 
   if (persist) {
     localStorage.setItem("wahyu-theme", nextTheme);
