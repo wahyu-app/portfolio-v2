@@ -690,6 +690,7 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   min-height: 0;
   flex: 1;
   flex-direction: column;
+  gap: 24px;
   justify-content: space-between;
   padding: 24px;
 }
@@ -1234,6 +1235,7 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   }
 
   .project-content {
+    gap: 20px;
     padding: 20px;
   }
 
