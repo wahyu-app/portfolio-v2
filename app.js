@@ -72,7 +72,6 @@ const projectsGrid = document.querySelector("[data-projects]");
 const projectSummary = document.querySelector("[data-project-summary]");
 const projectCardTemplate = document.querySelector("#project-card-template");
 const desktopBreakpoint = window.matchMedia("(min-width: 1024px)");
-const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let noticeTimer;
 let scrollFrame;
@@ -353,12 +352,6 @@ document.addEventListener("click", (event) => {
 desktopBreakpoint.addEventListener("change", (event) => {
   if (event.matches) {
     closeMenu();
-  }
-});
-
-systemTheme.addEventListener("change", (event) => {
-  if (!localStorage.getItem("wahyu-theme")) {
-    applyTheme(event.matches ? "light" : "dark", false);
   }
 });
 

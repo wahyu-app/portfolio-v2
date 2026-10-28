@@ -20,7 +20,7 @@
     <script>
       (() => {
         const savedTheme = localStorage.getItem("wahyu-theme");
-        const theme = savedTheme || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        const theme = savedTheme === "light" ? "light" : "dark";
         const themeColor = document.querySelector('meta[name="theme-color"]');
         document.documentElement.dataset.theme = theme;
         themeColor.content = themeColor.dataset[`${theme}Color`];
