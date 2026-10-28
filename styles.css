@@ -293,6 +293,10 @@ svg {
   flex-basis: 32px;
 }
 
+.theme-toggle:hover {
+  background: transparent;
+}
+
 .theme-toggle svg {
   position: absolute;
   width: 16px;
