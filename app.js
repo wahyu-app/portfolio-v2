@@ -55,6 +55,7 @@ const SITE_LINKS = Object.freeze({
   github: "https://github.com/wahyu-devs",
   linkedin: "",
 });
+const UNAVAILABLE_LINK_MESSAGE = "This link isn’t available yet. Please check back soon.";
 
 const root = document.documentElement;
 const themeToggle = document.querySelector(".theme-toggle");
@@ -68,6 +69,7 @@ const trackedSections = [...document.querySelectorAll("main section[id]")];
 const heroVisual = document.querySelector(".hero-visual");
 const scrollProgress = document.querySelector(".scroll-progress span");
 const linkNotice = document.querySelector(".link-notice");
+linkNotice.textContent = UNAVAILABLE_LINK_MESSAGE;
 const projectsGrid = document.querySelector("[data-projects]");
 const projectSummary = document.querySelector("[data-project-summary]");
 const projectCardTemplate = document.querySelector("#project-card-template");
@@ -114,11 +116,11 @@ function showPlaceholderNotice() {
   }, 2600);
 }
 
-function configureLink(link, destination, placeholderTitle) {
+function configureLink(link, destination) {
   if (!destination) {
     link.href = "#";
     link.setAttribute("aria-disabled", "true");
-    link.setAttribute("title", placeholderTitle);
+    link.setAttribute("title", UNAVAILABLE_LINK_MESSAGE);
     link.addEventListener("click", (event) => {
       event.preventDefault();
       showPlaceholderNotice();
@@ -139,7 +141,7 @@ function configureLink(link, destination, placeholderTitle) {
 function hydrateConfiguredLinks() {
   document.querySelectorAll("[data-link]").forEach((link) => {
     const destination = SITE_LINKS[link.dataset.link];
-    configureLink(link, destination, "Placeholder link — update SITE_LINKS in app.js");
+    configureLink(link, destination);
   });
 }
 
@@ -178,7 +180,7 @@ function renderWorkProjects() {
     card.querySelector(".project-content p").textContent = project.description;
     card.querySelector("[data-project-technologies]").textContent = project.technologies.join(" · ");
 
-    configureLink(card, project.url, "Placeholder project link — update WORK_PROJECTS in app.js");
+    configureLink(card, project.url);
     projectCards.append(card);
   });
 
