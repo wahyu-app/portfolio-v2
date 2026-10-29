@@ -54,7 +54,7 @@ html[data-theme="light"] {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 105px;
+  scroll-padding-top: 75px;
   background: var(--bg);
 }
 
@@ -1046,7 +1046,7 @@ html[data-theme="light"] .theme-toggle .moon-icon {
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 81px;
+    scroll-padding-top: 61px;
   }
 
   .site-header {
