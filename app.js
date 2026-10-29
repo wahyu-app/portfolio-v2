@@ -50,9 +50,9 @@ const WORK_PROJECTS = Object.freeze([
  * whatsapp: "https://wa.me/6281234567890"
  */
 const SITE_LINKS = Object.freeze({
-  email: "",
-  whatsapp: "",
-  github: "",
+  email: "mailto:wahyu_it@outlook.com",
+  whatsapp: "https://wa.me/+6281284439399",
+  github: "https://github.com/wahyu-devs",
   linkedin: "",
 });
 
