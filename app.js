@@ -21,7 +21,7 @@ const WORK_PROJECTS = Object.freeze([
     image: "assets/projects-2.png",
     imageAlt: "Preview of the Dicoding Landing Page",
     url: "",
-    year: 2024,
+    year: 2025,
   },
   {
     title: "CodePolitan Landing Page",
@@ -39,6 +39,15 @@ const WORK_PROJECTS = Object.freeze([
     image: "assets/projects-4.png",
     imageAlt: "Preview of the Museum of Art website",
     url: "",
+    year: 2025,
+  },
+  {
+    title: "Indramayu City Website",
+    description: "A responsive civic information website for Indramayu, West Java.",
+    technologies: ["HTML", "CSS"],
+    image: "assets/projects-1.png",
+    imageAlt: "Preview of the Indramayu City Website",
+    url: "https://wahyu-devs.github.io/indramayu-website/",
     year: 2025,
   },
 ]);
