@@ -6,13 +6,13 @@
  */
 const WORK_PROJECTS = Object.freeze([
   {
-    title: "Indramayu City Website",
-    description: "A responsive civic information website for Indramayu, West Java.",
-    technologies: ["HTML", "CSS"],
-    image: "assets/projects-1.png",
-    imageAlt: "Preview of the Indramayu City Website",
-    url: "",
-    year: 2024,
+    title: "BOQ Manager",
+    description: "Professional BOQ management app for creating quotations, managing products and customers, tracking revisions, and exporting documents.",
+    technologies: ["JS", "SUPABASE","EXCELJS"],
+    image: "assets/boq-manager-boq-editor.png",
+    imageAlt: "Preview of BOQ Manager",
+    url: "https://boq-demo.wahyu.app/",
+    year: 2026,
   },
   {
     title: "Dicoding Landing Page",
@@ -35,7 +35,7 @@ const WORK_PROJECTS = Object.freeze([
   {
     title: "Museum of Art",
     description: "A responsive museum website built with jQuery and Bootstrap.",
-    technologies: ["JQUERY", "BOOTSTRAP"],
+    technologies: ["JS","JQUERY", "BOOTSTRAP"],
     image: "assets/projects-4.png",
     imageAlt: "Preview of the Museum of Art website",
     url: "",
