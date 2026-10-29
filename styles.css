@@ -663,11 +663,11 @@ html[data-theme="light"] .theme-toggle .moon-icon {
 }
 
 .project-card > img {
-  width: calc(100% - 24px);
+  width: calc(100% - 16px);
   height: auto;
   aspect-ratio: 16 / 9;
   flex: 0 0 auto;
-  margin: 12px 12px 0;
+  margin: 8px 8px 0;
   background: var(--surface-raised);
   object-fit: cover;
 }
