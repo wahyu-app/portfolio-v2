@@ -7,7 +7,7 @@
 const WORK_PROJECTS = Object.freeze([
   {
     title: "BOQ Manager",
-    description: "Professional BOQ management app for creating quotations, managing products and customers, tracking revisions, and exporting documents.",
+    description: "An enterprise application for creating BOQs, managing product and customer data, and generating professional documents.",
     technologies: ["JS", "SUPABASE","EXCELJS"],
     image: "assets/boq-manager-boq-editor.png",
     imageAlt: "Preview of BOQ Manager",
