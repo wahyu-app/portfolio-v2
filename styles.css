@@ -668,7 +668,6 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   aspect-ratio: 16 / 9;
   flex: 0 0 auto;
   margin: 12px 12px 0;
-  border-radius: calc(var(--radius-card) - 6px);
   background: var(--surface-raised);
   object-fit: cover;
 }
