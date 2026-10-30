@@ -1046,7 +1046,7 @@ html[data-theme="light"] .theme-toggle .moon-icon {
 
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 56px;
+    scroll-padding-top: 51px;
   }
 
   .site-header {
