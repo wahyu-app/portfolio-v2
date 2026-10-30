@@ -71,7 +71,7 @@ const SITE_LINKS = Object.freeze({
   email: "mailto:wahyu.app@outlook.com",
   whatsapp: "https://wa.me/+6281284439399",
   github: "https://github.com/wahyu-app",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/wahyu-app",
 });
 const UNAVAILABLE_LINK_MESSAGE = "This link isn’t available yet. Please check back soon.";
 
