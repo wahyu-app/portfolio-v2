@@ -42,14 +42,14 @@ Project cards are generated from `WORK_PROJECTS` at the top of `app.js`. Add, re
   title: "Project title",
   description: "A short project description.",
   technologies: ["HTML", "CSS", "JS"],
-  image: "assets/project-image.png",
+  image: "assets/images/projects/project-image.png",
   imageAlt: "Accessible description of the project preview",
   url: "https://example.com",
   year: 2026,
 }
 ```
 
-Use a 16:9 desktop screenshot for each project image. Leave `url` empty while a project link is unavailable. The project count and year range are generated automatically.
+Store project screenshots in `assets/images/projects/` and use a 16:9 desktop screenshot for each project image. Leave `url` empty while a project link is unavailable. The project count and year range are generated automatically.
 
 ## Configuring Contact and Social Links
 
@@ -72,9 +72,11 @@ Empty values remain disabled and show a placeholder notice when selected.
 portfolio-v2/
 ├── assets/
 │   ├── fonts/
-│   ├── portrait.webp
-│   ├── projects-*.png
-│   └── favicon and home screen icons
+│   ├── icons/
+│   │   └── favicon-hi-res.png
+│   └── images/
+│       ├── portrait.webp
+│       └── projects/
 ├── app.js
 ├── index.html
 ├── styles.css
@@ -86,7 +88,7 @@ portfolio-v2/
 - Edit page content and section markup in `index.html`.
 - Update colors, spacing, breakpoints, and component styles in `styles.css`.
 - Update projects, external links, theme behavior, navigation state, and motion in `app.js`.
-- Replace images and fonts in `assets/` while keeping their referenced filenames in sync.
+- Replace fonts in `assets/fonts/`, icons in `assets/icons/`, and images in `assets/images/` while keeping their referenced paths in sync.
 
 ## Browser Support
 
