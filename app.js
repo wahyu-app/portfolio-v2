@@ -51,6 +51,15 @@ const WORK_PROJECTS = Object.freeze([
     year: 2026,
   },
   {
+    title: "Allez Shop Landing Page",
+    description: "A responsive landing page for a women’s preloved fashion store, featuring a full-screen video hero, a seamless category carousel, and subtle animations.",
+    technologies: ["HTML","CSS","JS"],
+    image: "assets/images/projects/allez-shop.png",
+    imageAlt: "Preview of Allez Shop Landing Page",
+    url: "https://allez-shop.wahyu.app/",
+    year: 2026,
+  },
+  {
     title: "Shopee Calculator",
     description: "A simple calculator web app to help sellers determine the correct product price on Shopee after fees and deductions.",
     technologies: ["HTML", "CSS", "JS"],
