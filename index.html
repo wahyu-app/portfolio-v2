@@ -109,7 +109,16 @@
           <div class="hero-visual" aria-label="Portrait of Wahyu">
             <div class="portrait-ring" aria-hidden="true"></div>
             <div class="portrait-clip">
-              <img src="assets/images/portrait.webp" alt="Portrait of Wahyu" width="864" height="1080" />
+              <img
+                src="assets/images/optimized/portrait-864.webp"
+                srcset="assets/images/optimized/portrait-432.webp 432w, assets/images/optimized/portrait-648.webp 648w, assets/images/optimized/portrait-864.webp 864w"
+                sizes="(max-width: 360px) calc(89.091vw - 35.6364px), (max-width: 600px) 294px, (max-width: 1023px) 268px, 428.45px"
+                alt="Portrait of Wahyu"
+                width="864"
+                height="1080"
+                loading="eager"
+                fetchpriority="high"
+              />
             </div>
           </div>
         </section>

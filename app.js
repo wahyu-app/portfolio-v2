@@ -3,13 +3,15 @@
  * - Add, remove, or reorder objects to update the project cards.
  * - Leave `url` empty to keep the project link as a placeholder.
  * - Use a four-digit number for `year` so the summary stays automatic.
+ * - Optionally add `imageSrcset` for responsive image variants; `image` remains the fallback.
  */
 const WORK_PROJECTS = Object.freeze([
   {
     title: "BOQ Manager",
     description: "An enterprise application for creating BOQs, managing product and customer data, and generating professional documents.",
     technologies: ["JS", "SUPABASE","EXCELJS"],
-    image: "assets/images/projects/boq-manager-boq-editor.png",
+    image: "assets/images/projects/optimized/boq-manager-boq-editor-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/boq-manager-boq-editor-640.webp 640w, assets/images/projects/optimized/boq-manager-boq-editor-960.webp 960w, assets/images/projects/optimized/boq-manager-boq-editor-1600.webp 1600w",
     imageAlt: "Preview of BOQ Manager",
     url: "https://boq-demo.wahyu.app/",
     year: 2026,
@@ -18,7 +20,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Travel Expense",
     description: "A business application for creating travel advance and expense reports, with live preview, PDF export, and local document storage.",
     technologies: ["JS", "BOOTSTRAP","JSPDF"],
-    image: "assets/images/projects/travel-expense.png",
+    image: "assets/images/projects/optimized/travel-expense-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/travel-expense-640.webp 640w, assets/images/projects/optimized/travel-expense-960.webp 960w, assets/images/projects/optimized/travel-expense-1600.webp 1600w",
     imageAlt: "Preview of Travel Expense",
     url: "https://travel-expense.wahyu.app/",
     year: 2026,
@@ -27,7 +30,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Perkom Link Portal",
     description: "A responsive, Linktree-inspired internal portal that centralizes essential company links.",
     technologies: ["HTML","CSS","JS","GMAIL API"],
-    image: "assets/images/projects/link-portal.png",
+    image: "assets/images/projects/optimized/link-portal-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/link-portal-640.webp 640w, assets/images/projects/optimized/link-portal-960.webp 960w, assets/images/projects/optimized/link-portal-1600.webp 1600w",
     imageAlt: "Preview of Perkom Link Portal",
     url: "https://perkom-portal.wahyu.app/",
     year: 2026,
@@ -36,7 +40,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "blink-182 Tribute Page",
     description: "A responsive tribute page for blink-182, a punk-rock band from California.",
     technologies: ["HTML","CSS","JS"],
-    image: "assets/images/projects/blink-182-tribute.png",
+    image: "assets/images/projects/optimized/blink-182-tribute-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/blink-182-tribute-640.webp 640w, assets/images/projects/optimized/blink-182-tribute-960.webp 960w, assets/images/projects/optimized/blink-182-tribute-1600.webp 1600w",
     imageAlt: "Preview of blink-182 Tribute Page",
     url: "https://blink182.wahyu.app/",
     year: 2025,
@@ -45,7 +50,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Warung Rasa Website",
     description: "A responsive website for a homemade bakery, featuring a product catalog, an interactive order cart, and WhatsApp ordering.",
     technologies: ["HTML","CSS","JS"],
-    image: "assets/images/projects/warung-rasa.png",
+    image: "assets/images/projects/optimized/warung-rasa-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/warung-rasa-640.webp 640w, assets/images/projects/optimized/warung-rasa-960.webp 960w, assets/images/projects/optimized/warung-rasa-1600.webp 1600w",
     imageAlt: "Preview of Warung Rasa Website",
     url: "https://warung-rasa.wahyu.app/",
     year: 2026,
@@ -54,7 +60,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Allez Shop Landing Page",
     description: "A responsive landing page for a women’s preloved fashion store, featuring a full-screen video hero, a seamless category carousel, and subtle animations.",
     technologies: ["HTML","CSS","JS"],
-    image: "assets/images/projects/allez-shop.png",
+    image: "assets/images/projects/optimized/allez-shop-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/allez-shop-640.webp 640w, assets/images/projects/optimized/allez-shop-960.webp 960w, assets/images/projects/optimized/allez-shop-1600.webp 1600w",
     imageAlt: "Preview of Allez Shop Landing Page",
     url: "https://allez-shop.wahyu.app/",
     year: 2026,
@@ -63,7 +70,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Shopee Calculator",
     description: "A simple calculator web app to help sellers determine the correct product price on Shopee after fees and deductions.",
     technologies: ["HTML", "CSS", "JS"],
-    image: "assets/images/projects/shopee-calc.png",
+    image: "assets/images/projects/optimized/shopee-calc-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/shopee-calc-640.webp 640w, assets/images/projects/optimized/shopee-calc-960.webp 960w, assets/images/projects/optimized/shopee-calc-1600.webp 1600w",
     imageAlt: "Preview of Shopee Calculator",
     url: "https://shopee-calc.wahyu.app/",
     year: 2026,
@@ -72,7 +80,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Codepolitan Landing Page",
     description: "A responsive course landing page implemented with JavaScript and Bootstrap 4.",
     technologies: ["JS", "BOOTSTRAP"],
-    image: "assets/images/projects/projects-3.png",
+    image: "assets/images/projects/optimized/projects-3-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/projects-3-640.webp 640w, assets/images/projects/optimized/projects-3-960.webp 960w, assets/images/projects/optimized/projects-3-1600.webp 1600w",
     imageAlt: "Preview of Codepolitan Landing Page",
     url: "https://codepolitan.wahyu.app/",
     year: 2025,
@@ -81,7 +90,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Dicoding Landing Page",
     description: "A responsive course landing page built with semantic HTML and CSS.",
     technologies: ["HTML", "CSS"],
-    image: "assets/images/projects/projects-2.png",
+    image: "assets/images/projects/optimized/projects-2-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/projects-2-640.webp 640w, assets/images/projects/optimized/projects-2-960.webp 960w, assets/images/projects/optimized/projects-2-1600.webp 1600w",
     imageAlt: "Preview of Dicoding Landing Page",
     url: "https://dicoding.wahyu.app/",
     year: 2025,
@@ -90,7 +100,8 @@ const WORK_PROJECTS = Object.freeze([
     title: "Museum of Art",
     description: "A responsive museum website built with jQuery and Bootstrap.",
     technologies: ["JS","JQUERY", "BOOTSTRAP"],
-    image: "assets/images/projects/projects-4.png",
+    image: "assets/images/projects/optimized/projects-4-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/projects-4-640.webp 640w, assets/images/projects/optimized/projects-4-960.webp 960w, assets/images/projects/optimized/projects-4-1600.webp 1600w",
     imageAlt: "Preview of Museum of Art website",
     url: "https://art-museum.wahyu.app/",
     year: 2025,
@@ -110,6 +121,13 @@ const SITE_LINKS = Object.freeze({
   linkedin: "https://www.linkedin.com/in/wahyu-app",
 });
 const UNAVAILABLE_LINK_MESSAGE = "This link isn’t available yet. Please check back soon.";
+const PROJECT_IMAGE_SIZES = [
+  "(max-width: 600px) calc(100vw - 64px)",
+  "(max-width: 1023px) calc((100vw - 148px) / 2)",
+  "(max-width: 1199px) calc((100vw - 212px) / 2)",
+  "(max-width: 1439px) calc((100vw - 256px) / 3)",
+  "394.67px",
+].join(", ");
 
 const root = document.documentElement;
 const themeToggle = document.querySelector(".theme-toggle");
@@ -227,6 +245,11 @@ function renderWorkProjects() {
   WORK_PROJECTS.forEach((project) => {
     const card = projectCardTemplate.content.firstElementChild.cloneNode(true);
     const image = card.querySelector("img");
+
+    if (project.imageSrcset) {
+      image.sizes = PROJECT_IMAGE_SIZES;
+      image.srcset = project.imageSrcset;
+    }
 
     image.src = project.image;
     image.alt = project.imageAlt;
