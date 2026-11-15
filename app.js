@@ -37,6 +37,16 @@ const WORK_PROJECTS = Object.freeze([
     year: 2026,
   },
   {
+    title: "Perkom Captive Portal",
+    description: "A responsive Wi-Fi captive portal interface with sign-in, password updates, and clear connection feedback.",
+    technologies: ["HTML","JS","TAILWIND"],
+    image: "assets/images/projects/optimized/captive-portal-1600.webp",
+    imageSrcset: "assets/images/projects/optimized/captive-portal-640.webp 640w, assets/images/projects/optimized/captive-portal-960.webp 960w, assets/images/projects/optimized/captive-portal-1600.webp 1600w",
+    imageAlt: "Preview of Perkom Captive Portal",
+    url: "https://captive-portal.wahyu.app/",
+    year: 2026,
+  },
+  {
     title: "blink-182 Tribute Page",
     description: "A responsive tribute page for blink-182, a punk-rock band from California.",
     technologies: ["HTML","CSS","JS"],
