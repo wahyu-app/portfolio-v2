@@ -21,9 +21,28 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Wahyu",
-        "url": "https://wahyu.app/"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "Wahyu",
+            "url": "https://wahyu.app/",
+            "publisher": {
+              "@id": "https://wahyu.app/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://wahyu.app/#person",
+            "name": "Wahyu",
+            "jobTitle": "Front-end Developer",
+            "url": "https://wahyu.app/",
+            "image": "https://wahyu.app/assets/images/optimized/portrait-864.webp",
+            "sameAs": [
+              "https://github.com/wahyu-app",
+              "https://www.linkedin.com/in/wahyu-app"
+            ]
+          }
+        ]
       }
     </script>
     <script>
